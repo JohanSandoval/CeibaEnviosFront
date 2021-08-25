@@ -19,6 +19,9 @@
       ],
       "@shared/*": [
         "src/app/shared/*"
+      ],
+      "@envio/*": [
+        "src/app/feature/envio/*"
       ]
     }
   },

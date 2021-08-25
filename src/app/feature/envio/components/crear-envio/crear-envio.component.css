@@ -1,0 +1,17 @@
+button{
+    margin: 5px;
+    float: right;
+}
+
+.form-margin-top{
+    margin-top: 30px;
+}
+
+.contorno{
+    border: 0.5px solid rgb(0, 89, 255);
+    border-radius: 5px;;
+}
+
+h2{
+    margin-top: 10px;
+}

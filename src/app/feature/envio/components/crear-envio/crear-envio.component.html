@@ -1,0 +1,52 @@
+<div class="container">
+    <hr>
+    <h2 class="text-center">CREAR UN NUEVO ENVIO</h2>
+    <hr>
+    <div class="container contorno">
+
+        <form class="form-margin-top" (ngSubmit)="guardar(envioForm)" #envioForm="ngForm">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <label class="" for="nombre">Nombre: </label>
+                    <input type="text" required id="nombre" name="nombre" class="form-control"
+                        [(ngModel)]="envioGuardar.nombre">
+                    <br>
+                    <label class="" for="apellido">Apellido: </label>
+                    <input type="text" required id="apellido" name="apellido" class="form-control"
+                        [(ngModel)]="envioGuardar.apellido">
+                    <br>
+                    <label class="" for="telefono">Telefono: </label>
+                    <input type="text" required id="telefono" name="telefono" class="form-control"
+                        [(ngModel)]="envioGuardar.telefono">
+                    <br>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="" for="ciudadOrigen">Ciudad De origen: </label>
+                    <select id="ciudadOrigen" class="form-select" name="ciudadOrigen"
+                        [(ngModel)]="envioGuardar.ciudadOrigen">
+                        <option value="1">Bogotá</option>
+                        <option value="2">Medellin</option>
+                        <option value="3">Cali</option>
+                        <option value="4">Cartagena</option>
+                    </select>
+                    <br>
+                    <label class="" for="ciudadDestino">Ciudad De Destino: </label>
+                    <select id="ciudadDestino" class="form-select" name="ciudadDestino"
+                        [(ngModel)]="envioGuardar.ciudadDestino">
+                        <option value="1">Bogotá</option>
+                        <option value="2">Medellin</option>
+                        <option value="3">Cali</option>
+                        <option value="4">Cartagena</option>
+                    </select>
+                    <br>
+                    <label for="peso">Peso paquete</label>
+                    <input type="number" id="peso" name="peso" class="form-control" [(ngModel)]="envioGuardar.peso">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button (click)="cancelar()" class=" btn btn-danger">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

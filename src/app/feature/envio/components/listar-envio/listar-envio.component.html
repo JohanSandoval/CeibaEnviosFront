@@ -1,0 +1,33 @@
+<div class="container">
+  <hr>
+  <h2 class="text-center">Listado de envios</h2>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Telefono</th>
+        <th>Ciudad Origen</th>
+        <th>Ciudad Destino</th>
+        <th>Peso Paquete</th>
+        <th>Costo Envio</th>
+        <th>Fecha de llegada Estimada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listaEnvios | async">
+        <td>{{item.id}}</td>
+        <td>{{item.nombre}}</td>
+        <td>{{item.apellido}}</td>
+        <td>{{item.telefono}}</td>
+        <td>{{item.ciudadOrigen}}</td>
+        <td>{{item.ciudadDestino}}</td>
+        <td>{{item.peso}}</td>
+        <td>{{item.costo}}</td>
+        <td>{{item.fechaEstimada}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+</div>
