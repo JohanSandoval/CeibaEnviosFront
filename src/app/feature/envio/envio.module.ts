@@ -8,7 +8,7 @@ import { EnvioComponent } from './components/envio/envio.component';
 import { CrearEnvioComponent } from './components/crear-envio/crear-envio.component';
 import { ListarEnvioComponent } from './components/listar-envio/listar-envio.component';
 import { UsuarioService } from '@usuario/shared/service/usuario.service';
-import { FiltroPipeEnvio } from '../pipe/filtro.pipe';
+import { FiltroPipeEnvio, FiltroPipeEnvioDestinatario, FiltroPipeEnvioRemitente } from '../pipe/filtro.pipe';
 
 
 @NgModule({
@@ -16,7 +16,9 @@ import { FiltroPipeEnvio } from '../pipe/filtro.pipe';
     ListarEnvioComponent,
     CrearEnvioComponent,
     EnvioComponent,
-    FiltroPipeEnvio
+    FiltroPipeEnvio,
+    FiltroPipeEnvioRemitente,
+    FiltroPipeEnvioDestinatario
   ],
   imports: [
     CommonModule,

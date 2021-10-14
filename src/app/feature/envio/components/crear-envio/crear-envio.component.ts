@@ -16,6 +16,7 @@ import { Observable } from "rxjs";
 export class CrearEnvioComponent implements OnInit {
   listaDeUsuarios : Observable<listarUsuario[]>;
   filterRemitente = '';
+  filterDestinatario = '';
 
   envioGuardar: EnvioGuardar = new EnvioGuardar();
   cedulaRemitente = '';
@@ -41,6 +42,7 @@ export class CrearEnvioComponent implements OnInit {
     this.envioServices.guardar(this.envioGuardar).subscribe(
       (response: any) => {
         alert("se ha creado el envio con el id: " + response.valor);
+        this.router.navigateByUrl("envio/listarEnvios");
       },
       (err) => {
         alert(" " + err.error.mensaje + " con codigo de error: " + err.status);
@@ -57,14 +59,10 @@ export class CrearEnvioComponent implements OnInit {
   }
   
   optenerParametrosR(){
-    
-    alert('cedula ' + Object.values(this.listaDeUsuarios))
     this.usuarioRemitente.cedula = this.itemEnviadoR.cedula;
     this.usuarioRemitente.nombre = this.itemEnviadoR.nombre; 
   }
   optenerParametrosD(){
-    
-    alert('cedula ' + Object.values(this.listaDeUsuarios))
     this.usuarioDestinataio.cedula = this.itemEnviadoD.cedula;
     this.usuarioDestinataio.nombre = this.itemEnviadoD.nombre; 
   }

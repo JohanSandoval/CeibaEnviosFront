@@ -7,16 +7,18 @@
     </div>
   </div>
 
+
+
   <div class="container contorno">
     <div class="row">
       <div class="col">
-          <div class="form-group">
-              <input type="text" class="form-control" name="filterEnvio" placeholder="Buscar id ..."
-                  [(ngModel)]="filterEnvio">
-              <br>
-          </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="filterEnvio" placeholder="Buscar id ..."
+            [(ngModel)]="filterEnvio">
+          <br>
+        </div>
       </div>
-  </div>
+    </div>
     <div class="row">
       <div class="col">
         <table class="table table-margin-top">
@@ -33,8 +35,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of listaEnvios | async | filtroEnvio:filterEnvio " >
-              <td class="visualizar" (click)="visualizar(item)"> Ver -> </td>
+            <tr *ngFor="let item of listaEnvios | async | filtroEnvio:filterEnvio ">
+              <td class="visualizar">
+                <button type="button" class="btn btn-success" (click)="openModal(envioModal, item)"> Ver -> </button>
+              </td>
               <td>{{item.id}}</td>
               <td>{{item.remitente.nombre}} {{item.remitente.apellido}}</td>
               <td>{{item.destinatario.nombre}} {{item.destinatario.apellido}}</td>
@@ -50,7 +54,94 @@
       </div>
     </div>
   </div>
-
+  <ng-template #envioModal let-modal>
+    <div class="modal-header">
+      <h3 class="modal-title">Envio {{envio.id}} </h3>
+      <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <fieldset>
+        <legend>
+          <h4>Remitente</h4>
+        </legend>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <label for="">Cedula</label>
+              <input type="text" class="form-control" readonly value="{{envio.remitente.cedula}}">
+              <br>
+              <label for="">Nombre completo</label>
+              <input type="text" class="form-control" readonly value="{{envio.remitente.nombre}}">
+              <br>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="">Ciudad</label>
+              <input type="text" class="form-control" readonly value="{{envio.remitente.ciudad.nombre}}">
+              <br>
+              <label for="">Telefono</label>
+              <input type="text" class="form-control" readonly value="{{envio.remitente.telefono}}">
+              <br>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <h4>Destinatario</h4>
+        </legend>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <label for="">Cedula</label>
+              <input type="text" class="form-control" readonly value="{{envio.destinatario.cedula}}">
+              <br>
+              <label for="">Nombre completo</label>
+              <input type="text" class="form-control" readonly value="{{envio.destinatario.nombre}}">
+              <br>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="">Ciudad</label>
+              <input type="text" class="form-control" readonly value="{{envio.destinatario.ciudad.nombre}}">
+              <br>
+              <label for="">Telefono</label>
+              <input type="text" class="form-control" readonly value="{{envio.destinatario.telefono}}">
+              <br>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <h4>Datos</h4>
+        </legend>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <label for="">Peso (KG)</label>
+              <input type="text" class="form-control" readonly value="{{envio.peso}}">
+              <br>
+              <label for="">Costo</label>
+              <input type="text" class="form-control" readonly value="{{envio.costo}}">
+              <br>
+            </div>
+            <div class="col-12 col-md-6">
+              <label for="">Fecha estimada de llegada</label>
+              <input type="text" class="form-control" readonly value="{{envio.fechaEstimadaLLegada}}">
+              <br>
+              <label for="">Direccion</label>
+              <input type="text" class="form-control" readonly value="{{envio.direccion}}">
+              <br>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="modal.close()">Ok!</button>
+    </div>
+  </ng-template>
 
   <hr>
 </div>

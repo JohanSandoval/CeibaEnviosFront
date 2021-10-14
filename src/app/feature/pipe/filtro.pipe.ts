@@ -82,5 +82,44 @@ export class FiltroPipeEnvio implements PipeTransform {
     };
     return resultEnvio;
   }
+}
 
+@Pipe({
+  name: 'filtroRemitente'
+})
+export class FiltroPipeEnvioRemitente implements PipeTransform {
+
+  transform(value: any, arg: any): any {   
+    if(arg === "" || arg.length <3){
+      return value
+    }
+    const resultRemitente = [];
+    for(const remitente of value){
+      console.log(arg);
+      if(remitente.cedula.indexOf(arg) > -1){
+        resultRemitente.push(remitente);
+      };
+    };
+    return resultRemitente;
+  }
+}
+
+@Pipe({
+  name: 'filtroDestinatario'
+})
+export class FiltroPipeEnvioDestinatario implements PipeTransform {
+
+  transform(value: any, arg: any): any {
+    if(arg === "" || arg.length <3){
+      return value
+    }
+    const resultDestinatario = [];
+    for(const destinatario of value){
+      console.log(arg);
+      if(destinatario.cedula.indexOf(arg) > -1){
+        resultDestinatario.push(destinatario);
+      };
+    };
+    return resultDestinatario;
+  }
 }

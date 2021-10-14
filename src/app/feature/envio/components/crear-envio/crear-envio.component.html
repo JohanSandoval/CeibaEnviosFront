@@ -14,13 +14,13 @@
                                 <div class="row">
                                     <div class="col-12 col-md-4">
                                         <label for="filterUsuario">Buscar</label>
-                                        <input type="text" class="form-control" id="filterUsuario" name="filterUsuario"
+                                        <input type="text" class="form-control" id="filterRemitente" name="filterRemitente"
                                             placeholder="Buscar ..." [(ngModel)]="filterRemitente">
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <label for="cedulaRemitente">Cedula</label>
                                         <select name="remitente" id="remitente" class="form-select" [(ngModel)]="itemEnviadoR.cedula" [(ngModel)]="envioGuardar.cedulaRemitente" >
-                                            <option *ngFor="let item of listaDeUsuarios | async" value="{{item.cedula}}">
+                                            <option *ngFor="let item of listaDeUsuarios | async | filtroRemitente:filterRemitente" value="{{item.cedula}}">
                                                 {{item.cedula}}</option>
                                         </select>
                                     </div>
@@ -64,13 +64,13 @@
                                 <div class="row">
                                     <div class="col-12 col-md-4">
                                         <label for="filterUsuario">Buscar</label>
-                                        <input type="text" class="form-control" id="filterUsuario" name="filterUsuario"
-                                            placeholder="Buscar ..." [(ngModel)]="filterRemitente">
+                                        <input type="text" class="form-control" id="filterDestinatario" name="filterDestinatario"
+                                            placeholder="Buscar ..." [(ngModel)]="filterDestinatario">
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <label for="cedulaRemitente">Cedula</label>
                                         <select name="remitente" id="remitente" class="form-select" [(ngModel)]="itemEnviadoD.cedula" [(ngModel)]="envioGuardar.cedulaDestinatario" >
-                                            <option *ngFor="let item of listaDeUsuarios | async" value="{{item.cedula}}">
+                                            <option *ngFor="let item of listaDeUsuarios | async | filtroDestinatario:filterDestinatario" value="{{item.cedula}}">
                                                 {{item.cedula}}</option>
                                         </select>
                                     </div>
