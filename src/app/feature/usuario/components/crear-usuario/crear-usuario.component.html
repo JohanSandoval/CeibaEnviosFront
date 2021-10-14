@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="text-center">CREAR USUARIO</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="container contorno">
+        <!--<form class="form-margin-top" #usuarioForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+
+                        <label for="cedula">Cedula</label>
+                        <input type="number" required id="cedula" class="form-control" [(ngModel)]="usuario.cedula">
+                        <br>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" required id="nombre" class="form-control" [(ngModel)]="usuario.nombre">
+                        <br>
+                        <label for="apellido">Apellido</label>
+                        <input type="text" required id="apellido" class="form-control" [(ngModel)]="usuario.apellido">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="ciudad">Ciudad</label>
+                        <select id="ciudad" class="form-select" name="ciudad" [(ngModel)]="usuario.ciudad">
+                            <option *ngFor="let item of listaCiudades | async" value="{{item.id}}">{{item.nombre}}
+                            </option>
+                        </select>
+                        <br>
+                        <label for="telefono">Telefono</label>
+                        <input type="text" required id="telefono" class="form-control" [(ngModel)]="usuario.telefono">
+                    </div>
+                </div>
+            </div>
+        </form>-->
+        <form class="form-margin-top" (ngSubmit)="crear(usuarioForm)" #usuarioForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <label for="cedula">Cedula</label>
+                        <input type="number" required id="cedula" name="cedula" class="form-control" [(ngModel)]="usuario.cedula">
+                        <br>    
+                        <label for="nombre">Nombre</label>                  
+                        <input type="text" required id="nombre" name="nombre" class="form-control" [(ngModel)]="usuario.nombre">
+                        <br>
+                        <label for="apellido">Apellido</label>
+                        <input type="text" required id="apellido" name="apellido" class="form-control" [(ngModel)]="usuario.apellido">
+                        <br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="ciudad">Ciudad</label>
+                        <select id="ciudad" class="form-select" name="ciudad" [(ngModel)]="usuario.ciudad">
+                            <option *ngFor="let item of listaCiudades | async" value="{{item.id}}">{{item.nombre}}
+                            </option>
+                        </select>
+                        <br>
+                        <label for="telefono">Telefono</label>
+                        <input type="text" required id="telefono" name="telefono" class="form-control" [(ngModel)]="usuario.telefono">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                        <button class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

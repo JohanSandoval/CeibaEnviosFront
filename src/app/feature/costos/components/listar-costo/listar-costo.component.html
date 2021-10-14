@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="text-center">LISTADO DE COSTOS</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="container contorno">
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Peso minimo</th>
+                            <th>Peso maximo</th>
+                            <th>costo KG</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let item of listaCostos | async'>
+                            <td>{{item.id}}</td>
+                            <td>{{item.pesoMax}}</td>
+                            <td>{{item.pesoMin}}</td>
+                            <td>{{item.costo}}</td>
+                            <td><button class="btn btn-primary" (click)="actualizar(item)">Actualizar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

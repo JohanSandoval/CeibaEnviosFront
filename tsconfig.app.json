@@ -22,6 +22,18 @@
       ],
       "@envio/*": [
         "src/app/feature/envio/*"
+      ],
+      "@ciudad/*":[
+        "src/app/feature/ciudad/*"
+      ],
+      "@usuario/*":[
+        "src/app/feature/usuario/*"
+      ],
+      "@dias-espera/*":[
+        "src/app/feature/dias-espera/*"
+      ],
+      "@costos/*":[
+        "src/app/feature/costos/*"
       ]
     }
   },

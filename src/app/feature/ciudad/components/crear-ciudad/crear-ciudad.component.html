@@ -1,0 +1,19 @@
+<div class="container">
+    <hr>
+    <h2 class="text-center">CREAR NUEVA CIUDAD</h2>
+    <hr>
+    <div class="container contorno">
+        <form class="form-margin-top" (ngSubmit)="crear(ciudadForm)" #ciudadForm="ngForm">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <label class="" for="nombre">Nombre:</label>
+                    <input type="text" required id="nombre" name="nombre" class="form-control" [(ngModel)]="ciudad.nombre">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button  class="btn btn-danger">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

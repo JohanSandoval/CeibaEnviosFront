@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="text-center">CREAR COSTO</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="container contorno">
+        <form class="form-margin-top" (ngSubmit)="crear(costoForm)" #costoForm="ngForm">
+            <div class="row">
+                <div class="col-12">
+                    <label for="pesomax">Peso Maximo</label>
+                    <input type="text" class="form-control" id="pesomax" name="pesomax" [(ngModel)]="costo.pesoMax">
+                    <br>
+                    <label for="pesomin">Peso Minimo</label>
+                    <input type="text" class="form-control" id="pesomin" name="pesomin" [(ngModel)]="costo.pesoMin">
+                    <br>
+                    <label for="costo">Costo Kg</label>
+                    <input type="text" class="form-control" id="costo" name="costo" [(ngModel)]="costo.costo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button class="btn btn-danger">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

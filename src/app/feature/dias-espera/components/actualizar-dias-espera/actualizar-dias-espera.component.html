@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="text-center">ACTUALIZAR RUTA</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="container contorno">
+        <form class="form-margin-top" (ngSubmit)="actualizar(diasEsperaForm)" #diasEsperaForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="id">Id</label>
+                        <input type="text" class="form-control" readonly id="id" name="id" [(ngModel)]="diasEspera.id">
+                        <br>
+                        <label for="ciudadOrigen">Ciudad Origen</label>
+                        <select id="ciudaO" class="form-select" name="ciudadO" [(ngModel)]="diasEspera.idCiudadO">
+                            <option *ngFor="let item of listaCiudades | async" value="{{item.id}}">{{item.nombre}}
+                            </option>
+                        </select>
+                        <br>
+                        <label for="ciudadDestino">Ciudad Destino</label>
+                        <select id="ciudadD" class="form-select" name="ciudadD" [(ngModel)]="diasEspera.idCiudadD">
+                            <option *ngFor="let item of listaCiudades | async" value="{{item.id}}">{{item.nombre}}
+                            </option>
+                        </select>
+                        <br>
+                        <label for="dias">Dias Espera</label>
+                        <input type="text" class="form-control" required id="dias" name="dias"
+                            [(ngModel)]="diasEspera.dias">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        <button class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -10,11 +10,16 @@ import { Observable } from 'rxjs';
 })
 export class ListarEnvioComponent implements OnInit {
   public listaEnvios: Observable<Envio[]>;
+  filterEnvio = '';
 
   constructor(protected envioService: EnvioService) { }
 
   ngOnInit() {
     this.listaEnvios = this.envioService.consultar();
+  }
+
+  visualizar(envio : Envio){
+    window.confirm("envio " +envio.id + " " + envio.destinatario.nombre +  " " + envio.remitente.nombre );
   }
 
 

@@ -1,0 +1,38 @@
+<div class="container">
+    <hr>
+    <h2 class="text-center">LISTADO DE CIUDADES</h2>
+    <hr>
+    <div class="container contorno">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="filterCiudad" placeholder="Buscar ..."
+                        [(ngModel)]="filterCiudad">
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th>ACCION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of listaCiudades | async | filtroCiudad:filterCiudad ">
+                            <td>{{item.id}}</td>
+                            <td>{{item.nombre}}</td>
+                            <td><button class="btn btn-primary" (click)="actualizar(item)">Actualizar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <hr>

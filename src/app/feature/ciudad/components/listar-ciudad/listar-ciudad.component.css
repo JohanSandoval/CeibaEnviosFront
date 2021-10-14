@@ -1,0 +1,8 @@
+.contorno{
+    border: 0.5px solid rgb(0, 89, 255);
+    border-radius: 5px;;
+}
+
+.form-group{
+    margin-top: 25px;
+}

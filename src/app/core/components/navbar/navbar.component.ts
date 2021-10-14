@@ -5,15 +5,16 @@ import { MenuItem } from '@core/modelo/menu-item';
   selector: 'app-navbar',
   templateUrl: 'navbar.component.html',
   styles: [`:host {
+    background-color: #106cc8;
     border: 0 solid #e1e1e1;
     border-bottom-width: 1px;
     display: block;
     height: 48px;
-    padding: 0 16px;
+    padding: 0 50px;
   }
-
+  
   nav a {
-    color: #8f8f8f;
+    color: white;
     font-size: 14px;
     font-weight: 500;
     line-height: 48px;

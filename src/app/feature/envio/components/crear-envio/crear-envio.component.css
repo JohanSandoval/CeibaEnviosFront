@@ -15,3 +15,15 @@ button{
 h2{
     margin-top: 10px;
 }
+
+fieldset{
+    border: solid 0.5px;
+}
+
+legend{
+    margin: 5px 10px;
+}
+
+.input-button{
+    float:left;
+}

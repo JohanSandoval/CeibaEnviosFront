@@ -1,33 +1,56 @@
 <div class="container">
-  <hr>
-  <h2 class="text-center">Listado de envios</h2>
-  <table class="table">
-    <thead class="table-dark">
-      <tr>
-        <th>Id</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Telefono</th>
-        <th>Ciudad Origen</th>
-        <th>Ciudad Destino</th>
-        <th>Peso Paquete</th>
-        <th>Costo Envio</th>
-        <th>Fecha de llegada Estimada</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of listaEnvios | async">
-        <td>{{item.id}}</td>
-        <td>{{item.nombre}}</td>
-        <td>{{item.apellido}}</td>
-        <td>{{item.telefono}}</td>
-        <td>{{item.ciudadOrigen}}</td>
-        <td>{{item.ciudadDestino}}</td>
-        <td>{{item.peso}}</td>
-        <td>{{item.costo}}</td>
-        <td>{{item.fechaEstimada}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h2 class="text-center">LISTADO DE ENVIOS</h2>
+      <br>
+    </div>
+  </div>
+
+  <div class="container contorno">
+    <div class="row">
+      <div class="col">
+          <div class="form-group">
+              <input type="text" class="form-control" name="filterEnvio" placeholder="Buscar id ..."
+                  [(ngModel)]="filterEnvio">
+              <br>
+          </div>
+      </div>
+  </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-margin-top">
+          <thead class="table-dark">
+            <tr>
+              <th>°</th>
+              <th>Id</th>
+              <th>Remitente</th>
+              <th>Destinatario</th>
+              <th>Peso</th>
+              <th>Ciudad Destino</th>
+              <th>Direccion</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listaEnvios | async | filtroEnvio:filterEnvio " >
+              <td class="visualizar" (click)="visualizar(item)"> Ver -> </td>
+              <td>{{item.id}}</td>
+              <td>{{item.remitente.nombre}} {{item.remitente.apellido}}</td>
+              <td>{{item.destinatario.nombre}} {{item.destinatario.apellido}}</td>
+              <td>{{item.peso}}</td>
+              <td>{{item.destinatario.ciudad.nombre}}</td>
+              <td>{{item.direccion}}</td>
+              <td>
+                <button class="btn btn-primary">Actualizar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
   <hr>
 </div>

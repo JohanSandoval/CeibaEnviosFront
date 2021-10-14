@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="text-center">LISTAR RUTAS</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <input type="text" class="form-control" name="filterRuta" placeholder="Buscar destino ..." [(ngModel)]="filterRuta">
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Ciudad Origen</th>
+                        <th>Ciudad Destino</th>
+                        <th>Dias</th>
+                        <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listarDiasEspera | async | filtroDiasEspera:filterRuta">
+                        <td>{{item.id}}</td>
+                        <td>{{item.ciudadOrigen.nombre}}</td>
+                        <td>{{item.ciudadDestino.nombre}}</td>
+                        <td>{{item.dias}}</td>
+                        <td><button class="btn btn-primary" (click)="actualizar(item)">Actualizar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

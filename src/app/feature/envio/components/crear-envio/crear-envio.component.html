@@ -1,52 +1,143 @@
 <div class="container">
     <hr>
-    <h2 class="text-center">CREAR UN NUEVO ENVIO</h2>
+    <h2 class="text-center">CREAR NUEVO ENVIO</h2>
     <hr>
     <div class="container contorno">
 
         <form class="form-margin-top" (ngSubmit)="guardar(envioForm)" #envioForm="ngForm">
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <label class="" for="nombre">Nombre: </label>
-                    <input type="text" required id="nombre" name="nombre" class="form-control"
-                        [(ngModel)]="envioGuardar.nombre">
-                    <br>
-                    <label class="" for="apellido">Apellido: </label>
-                    <input type="text" required id="apellido" name="apellido" class="form-control"
-                        [(ngModel)]="envioGuardar.apellido">
-                    <br>
-                    <label class="" for="telefono">Telefono: </label>
-                    <input type="text" required id="telefono" name="telefono" class="form-control"
-                        [(ngModel)]="envioGuardar.telefono">
-                    <br>
-                </div>
-                <div class="col-12 col-md-6">
-                    <label class="" for="ciudadOrigen">Ciudad De origen: </label>
-                    <select id="ciudadOrigen" class="form-select" name="ciudadOrigen"
-                        [(ngModel)]="envioGuardar.ciudadOrigen">
-                        <option value="1">Bogotá</option>
-                        <option value="2">Medellin</option>
-                        <option value="3">Cali</option>
-                        <option value="4">Cartagena</option>
-                    </select>
-                    <br>
-                    <label class="" for="ciudadDestino">Ciudad De Destino: </label>
-                    <select id="ciudadDestino" class="form-select" name="ciudadDestino"
-                        [(ngModel)]="envioGuardar.ciudadDestino">
-                        <option value="1">Bogotá</option>
-                        <option value="2">Medellin</option>
-                        <option value="3">Cali</option>
-                        <option value="4">Cartagena</option>
-                    </select>
-                    <br>
-                    <label for="peso">Peso paquete</label>
-                    <input type="number" id="peso" name="peso" class="form-control" [(ngModel)]="envioGuardar.peso">
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button (click)="cancelar()" class=" btn btn-danger">Cancelar</button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <fieldset>
+                            <legend>Remitente</legend>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <label for="filterUsuario">Buscar</label>
+                                        <input type="text" class="form-control" id="filterUsuario" name="filterUsuario"
+                                            placeholder="Buscar ..." [(ngModel)]="filterRemitente">
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <label for="cedulaRemitente">Cedula</label>
+                                        <select name="remitente" id="remitente" class="form-select" [(ngModel)]="itemEnviadoR.cedula" [(ngModel)]="envioGuardar.cedulaRemitente" >
+                                            <option *ngFor="let item of listaDeUsuarios | async" value="{{item.cedula}}">
+                                                {{item.cedula}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-4  ">
+                                        <label for="">Accion</label>
+                                        <div class="col ">
+                                            <input type="button" class="btn btn-primary" (click)="optenerParametrosR()" value="Selecionar">
+                                            <input type="button" class="btn btn-warning" (click)="crearNuevoUsuario()" value="Crear nuevo usuario">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <label for="cedulaR">Cedula</label>
+                                        <input type="text" class="form-control" readonly id="cedulaR" name="cedulaR" [(ngModel)]="usuarioRemitente.cedula">
+                                        <br>
+                                        <label for="nombreR">Nombre</label>
+                                        <input type="text" class="form-control" readonly id="nombreR" name="nombreR" [(ngModel)]="usuarioRemitente.nombre">
+                                        <br>
+                                        <label for="apellidoR">Apellido</label>
+                                        <input type="text" class="form-control" readonly id="apellidoR" name="apellidoR" [(ngModel)]="usuarioRemitente.apellido">
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label for="ciudadR">Ciudad</label>
+                                        <input type="text" class="form-control" readonly id="ciudadR" name="ciudadR" [(ngModel)]="usuarioRemitente.ciudad">
+                                        <br>
+                                        <label for="telefonoR">Telefono</label>
+                                        <input type="text" class="form-control" readonly id="telefonoR" name="telefonoR" [(ngModel)]="usuarioRemitente.telefono">
+                                        <br>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                            <legend>Destinatario</legend>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12 col-md-4">
+                                        <label for="filterUsuario">Buscar</label>
+                                        <input type="text" class="form-control" id="filterUsuario" name="filterUsuario"
+                                            placeholder="Buscar ..." [(ngModel)]="filterRemitente">
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <label for="cedulaRemitente">Cedula</label>
+                                        <select name="remitente" id="remitente" class="form-select" [(ngModel)]="itemEnviadoD.cedula" [(ngModel)]="envioGuardar.cedulaDestinatario" >
+                                            <option *ngFor="let item of listaDeUsuarios | async" value="{{item.cedula}}">
+                                                {{item.cedula}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-4  ">
+                                        <label for="">Accion</label>
+                                        <div class="col ">
+                                            <input type="button" class="btn btn-primary" (click)="optenerParametrosD()" value="Selecionar">
+                                            <input type="button" class="btn btn-warning" (click)="crearNuevoUsuario()" value="Crear nuevo usuario">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <label for="cedulaD">Cedula</label>
+                                        <input type="text" class="form-control" readonly id="cedulaD" name="cedulaD" [(ngModel)]="usuarioDestinataio.cedula">
+                                        <br>
+                                        <label for="nombreD">Nombre</label>
+                                        <input type="text" class="form-control" readonly id="nombreD" name="nombreD" [(ngModel)]="usuarioDestinataio.nombre">
+                                        <br>
+                                        <label for="apellidoD">Apellido</label>
+                                        <input type="text" class="form-control" readonly id="apellidoD" name="apellidoD" [(ngModel)]="usuarioDestinataio.apellido">
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label for="ciudadD">Ciudad</label>
+                                        <input type="text" class="form-control" readonly id="ciudadD" name="ciudadD" [(ngModel)]="usuarioDestinataio.ciudad">
+                                        <br>
+                                        <label for="telefonoD">Telefono</label>
+                                        <input type="text" class="form-control" readonly id="telefonoD" name="telefonoD" [(ngModel)]="usuarioDestinataio.telefono">
+                                        <br>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                            <legend>Datos de envio</legend>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <label for="peso">Peso</label>
+                                        <input type="text" class="form-control" id="peso" name="peso" [(ngModel)]="envioGuardar.peso">
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label for="direccion">Direccion de entrega</label>
+                                        <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="envioGuardar.direccion">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </fieldset>
+                        <br>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <button class="btn btn-danger">Cancelar</button>
+                                    <button class="btn btn-primary" type="submit">Crear Envio</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
+    <br>
 </div>

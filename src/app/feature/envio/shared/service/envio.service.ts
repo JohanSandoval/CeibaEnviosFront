@@ -1,26 +1,24 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpService } from '@core-service/http.service';
+
 import { environment } from 'src/environments/environment';
-import { Envio } from '../model/envio';
 import { EnvioGuardar } from '../model/envioGuardar';
 
 
 @Injectable()
 export class EnvioService {
 
-  constructor(protected http: HttpService) {}
+  constructor(protected http: HttpClient) {}
 
   public consultar() {
-    return this.http.doGet<any>(`http://localhost:8080${environment.endpoint}/envios`, this.http.optsName('consultar envio'));
+    return this.http.get<any>(`${environment.endpoint}/envio`);
   }
 
   public guardar(envioGuardar: EnvioGuardar) {
-    return this.http.doPost<EnvioGuardar, boolean>(`${environment.endpoint}/envios`, envioGuardar,
-                                                this.http.optsName('crear envio'));
+    return this.http.post(`${environment.endpoint}/envio`, envioGuardar);
   }
 
-  public consultarById(envio: Envio) {
-    return this.http.doDelete<boolean>(`${environment.endpoint}/envios/${envio.id}`,
-                                                 this.http.optsName('consultar envio por id'));
+  public actualizar(id : number, envio : EnvioGuardar){
+    return this.http.put(`${environment.endpoint}/envio/${id}`, envio);
   }
 }

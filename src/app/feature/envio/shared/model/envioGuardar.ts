@@ -1,11 +1,10 @@
 export class EnvioGuardar {
     
-    nombre: string;
-    apellido: string;
-    telefono: string;
-    ciudadOrigen: number;
-    ciudadDestino: number;
-    peso: number;
+    id :number;
+    cedulaRemitente : number;
+    cedulaDestinatario: number;
+    peso : number
+    direccion: String;
     
 
     /*constructor(  nombre: string, apellido: string, telefono: string,

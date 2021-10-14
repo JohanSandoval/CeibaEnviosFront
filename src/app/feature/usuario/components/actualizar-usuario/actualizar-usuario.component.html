@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="text-center">ACTUALIZAR USUARIO</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="container contorno">
+        <form action="" class="form-margin-top" (ngSubmit)="actualizar(usuarioForm)" #usuarioForm="ngForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <label for="id">Id</label>
+                        <input type="number" class="form-control" readonly id="id" name="id" [(ngModel)]="usuario.id">
+                        <br>
+                        <label for="cedula">Cedula</label>
+                        <input type="text" class="form-control" required id="cedula" name="cedula" [(ngModel)]="usuario.cedula">
+                        <br>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" required id="nombre" name="nombre" [(ngModel)]="usuario.nombre">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" required id="apellido" name="apellido" [(ngModel)]="usuario.apellido">
+                        <br>
+                        <label for="ciudad">Ciudad</label>
+                        <select id="ciudad" class="form-select" name="ciudad" [(ngModel)]="usuario.ciudad">
+                            <option *ngFor="let item of listaCiudades | async" value="{{item.id}}">{{item.nombre}}
+                            </option>
+                        </select>
+                        <br>
+                        <label for="telefono">Telefono</label>
+                        <input type="text" class="form-control" required id="telefono" name="telefono" [(ngModel)]="usuario.telefono"> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        <button class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
