@@ -4,8 +4,9 @@ import {
   HttpTestingController,
 } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
+import { Ciudad } from "@ciudad/shared/model/ciudad";
 import { HttpService } from "@core/services/http.service";
-import { Usuario } from "@usuario/shared/model/usuario";
+import { listarUsuario } from "@usuario/shared/model/listarUsuarios";
 import { environment } from "src/environments/environment";
 import { Envio } from "../model/envio";
 import { EnvioGuardar } from "../model/envioGuardar";
@@ -32,12 +33,17 @@ describe("EnvioService", () => {
   });
 
   it("deberia de listar envio", () => {
-    let testUsuario: Usuario = new Usuario();
+    let testCiudad: Ciudad = new Ciudad();
+    testCiudad.id = 1;
+    testCiudad.nombre = 'bogota';
+  
+
+    let testUsuario: listarUsuario = new listarUsuario();
     testUsuario.id = 1;
     testUsuario.cedula = "123456789";
     testUsuario.nombre = "nombre";
     testUsuario.apellido = "apellido";
-    testUsuario.ciudad = 2;
+    testUsuario.ciudad = testCiudad;
     testUsuario.telefono = "7777777";
     
     let testEnvio: Envio = new Envio();
