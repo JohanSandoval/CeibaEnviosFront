@@ -19,16 +19,16 @@
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <label for="cedulaRemitente">Cedula</label>
-                                        <select name="remitente" id="remitente" class="form-select" [(ngModel)]="itemEnviadoR.cedula" [(ngModel)]="envioGuardar.cedulaRemitente" >
-                                            <option *ngFor="let item of listaDeUsuarios | async | filtroRemitente:filterRemitente" value="{{item.cedula}}">
+                                        <select name="remitente" id="remitente" class="form-select" [(ngModel)]="envioGuardar.cedulaRemitente" >
+                                            <option *ngFor="let item of listaDeUsuarios | async | filtroRemitente:filterRemitente" value="{{item.cedula}}" (click)="optenerParametrosR(item)">
                                                 {{item.cedula}}</option>
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-4  ">
                                         <label for="">Accion</label>
                                         <div class="col ">
-                                            <input type="button" class="btn btn-primary" (click)="optenerParametrosR()" value="Selecionar">
-                                            <input type="button" class="btn btn-warning" (click)="crearNuevoUsuario()" value="Crear nuevo usuario">
+                                            <!--<input type="button" class="btn btn-primary"  value="Selecionar">-->
+                                            <input type="button" class="btn btn-success" (click)="crearNuevoUsuario()" value="Crear nuevo remitente">
                                         </div>
 
                                     </div>
@@ -37,20 +37,20 @@
                                 <div class="row">
                                     <div class="col-12 col-md-6">
                                         <label for="cedulaR">Cedula</label>
-                                        <input type="text" class="form-control" readonly id="cedulaR" name="cedulaR" [(ngModel)]="usuarioRemitente.cedula">
+                                        <input type="text" class="form-control" readonly id="cedulaR" name="cedulaR" [(ngModel)]="remitente.cedula">
                                         <br>
                                         <label for="nombreR">Nombre</label>
-                                        <input type="text" class="form-control" readonly id="nombreR" name="nombreR" [(ngModel)]="usuarioRemitente.nombre">
+                                        <input type="text" class="form-control" readonly id="nombreR" name="nombreR" [(ngModel)]="remitente.nombre">
                                         <br>
                                         <label for="apellidoR">Apellido</label>
-                                        <input type="text" class="form-control" readonly id="apellidoR" name="apellidoR" [(ngModel)]="usuarioRemitente.apellido">
+                                        <input type="text" class="form-control" readonly id="apellidoR" name="apellidoR" [(ngModel)]="remitente.apellido">
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <label for="ciudadR">Ciudad</label>
-                                        <input type="text" class="form-control" readonly id="ciudadR" name="ciudadR" [(ngModel)]="usuarioRemitente.ciudad">
+                                        <input type="text" class="form-control" readonly id="ciudadR" name="ciudadR" [(ngModel)]="remitente.ciudad">
                                         <br>
                                         <label for="telefonoR">Telefono</label>
-                                        <input type="text" class="form-control" readonly id="telefonoR" name="telefonoR" [(ngModel)]="usuarioRemitente.telefono">
+                                        <input type="text" class="form-control" readonly id="telefonoR" name="telefonoR" [(ngModel)]="remitente.telefono">
                                         <br>
                                     </div>
                                 </div>
@@ -69,16 +69,16 @@
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <label for="cedulaRemitente">Cedula</label>
-                                        <select name="remitente" id="remitente" class="form-select" [(ngModel)]="itemEnviadoD.cedula" [(ngModel)]="envioGuardar.cedulaDestinatario" >
-                                            <option *ngFor="let item of listaDeUsuarios | async | filtroDestinatario:filterDestinatario" value="{{item.cedula}}">
+                                        <select name="remitente" id="remitente" class="form-select"  [(ngModel)]="envioGuardar.cedulaDestinatario" >
+                                            <option *ngFor="let item of listaDeUsuarios | async | filtroDestinatario:filterDestinatario" value="{{item.cedula}}" (click)="optenerParametrosD(item)">
                                                 {{item.cedula}}</option>
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-4  ">
                                         <label for="">Accion</label>
                                         <div class="col ">
-                                            <input type="button" class="btn btn-primary" (click)="optenerParametrosD()" value="Selecionar">
-                                            <input type="button" class="btn btn-warning" (click)="crearNuevoUsuario()" value="Crear nuevo usuario">
+                                            <!--<input type="button" class="btn btn-primary" (click)="optenerParametrosD()" value="Selecionar">-->
+                                            <input type="button" class="btn btn-success" (click)="crearNuevoUsuario()" value="Crear nuevo destinatario">
                                         </div>
 
                                     </div>
@@ -87,20 +87,20 @@
                                 <div class="row">
                                     <div class="col-12 col-md-6">
                                         <label for="cedulaD">Cedula</label>
-                                        <input type="text" class="form-control" readonly id="cedulaD" name="cedulaD" [(ngModel)]="usuarioDestinataio.cedula">
+                                        <input type="text" class="form-control" readonly id="cedulaD" name="cedulaD" [(ngModel)]="destinataio.cedula">
                                         <br>
                                         <label for="nombreD">Nombre</label>
-                                        <input type="text" class="form-control" readonly id="nombreD" name="nombreD" [(ngModel)]="usuarioDestinataio.nombre">
+                                        <input type="text" class="form-control" readonly id="nombreD" name="nombreD" [(ngModel)]="destinataio.nombre">
                                         <br>
                                         <label for="apellidoD">Apellido</label>
-                                        <input type="text" class="form-control" readonly id="apellidoD" name="apellidoD" [(ngModel)]="usuarioDestinataio.apellido">
+                                        <input type="text" class="form-control" readonly id="apellidoD" name="apellidoD" [(ngModel)]="destinataio.apellido">
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <label for="ciudadD">Ciudad</label>
-                                        <input type="text" class="form-control" readonly id="ciudadD" name="ciudadD" [(ngModel)]="usuarioDestinataio.ciudad">
+                                        <input type="text" class="form-control" readonly id="ciudadD" name="ciudadD" [(ngModel)]="destinataio.ciudad">
                                         <br>
                                         <label for="telefonoD">Telefono</label>
-                                        <input type="text" class="form-control" readonly id="telefonoD" name="telefonoD" [(ngModel)]="usuarioDestinataio.telefono">
+                                        <input type="text" class="form-control" readonly id="telefonoD" name="telefonoD" [(ngModel)]="destinataio.telefono">
                                         <br>
                                     </div>
                                 </div>

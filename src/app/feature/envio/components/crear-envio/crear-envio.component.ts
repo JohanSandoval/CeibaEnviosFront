@@ -19,13 +19,9 @@ export class CrearEnvioComponent implements OnInit {
   filterDestinatario = '';
 
   envioGuardar: EnvioGuardar = new EnvioGuardar();
-  cedulaRemitente = '';
 
-  itemEnviadoR : listarUsuario = new listarUsuario();
-  itemEnviadoD : listarUsuario = new listarUsuario();
-
-  usuarioRemitente : Usuario = new Usuario();
-  usuarioDestinataio : Usuario = new Usuario();
+  remitente : Usuario = new Usuario();
+  destinataio : listarUsuario = new listarUsuario();
   
 
   constructor(private router: Router, protected envioServices: EnvioService, protected usuarioService: UsuarioService) {}
@@ -39,6 +35,9 @@ export class CrearEnvioComponent implements OnInit {
     if(!envioform){
       return false
     }
+
+    alert(this.envioGuardar.cedulaRemitente);
+    /*
     this.envioServices.guardar(this.envioGuardar).subscribe(
       (response: any) => {
         alert("se ha creado el envio con el id: " + response.valor);
@@ -46,7 +45,7 @@ export class CrearEnvioComponent implements OnInit {
       },
       (err) => {
         alert(" " + err.error.mensaje + " con codigo de error: " + err.status);
-      });
+      });*/
   }
 
   listarUsuarios(){
@@ -54,17 +53,23 @@ export class CrearEnvioComponent implements OnInit {
   }
   
   cancelar() {
-    alert("se ha cancelado la creacion del envio");
     this.router.navigateByUrl("envio/listarEnvios");
   }
   
-  optenerParametrosR(){
-    this.usuarioRemitente.cedula = this.itemEnviadoR.cedula;
-    this.usuarioRemitente.nombre = this.itemEnviadoR.nombre; 
+  optenerParametrosR(item){
+    this.remitente.cedula = item.cedula;
+    this.remitente.nombre = item.nombre; 
+    this.remitente.apellido = item.apellido;
+    this.remitente.ciudad = item.ciudad.nombre;
+    this.remitente.telefono = item.telefono;
   }
-  optenerParametrosD(){
-    this.usuarioDestinataio.cedula = this.itemEnviadoD.cedula;
-    this.usuarioDestinataio.nombre = this.itemEnviadoD.nombre; 
+  optenerParametrosD(item){
+    this.destinataio.cedula = item.cedula;
+    this.destinataio.nombre = item.nombre; 
+    this.destinataio.apellido = item.apellido;
+    this.destinataio.ciudad = item.ciudad.nombre;
+    this.destinataio.telefono = item.telefono;
+
   }
   crearNuevoUsuario(){
     this.router.navigateByUrl("/usuario/crearUsuario");
